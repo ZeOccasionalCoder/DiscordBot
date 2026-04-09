@@ -1,0 +1,617 @@
+/* ============================================================
+   Sea Worthy Clan Dashboard — Global Styles
+   ============================================================ */
+
+/* Reset & Base */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-tertiary: #1c2333;
+    --border: #30363d;
+    --border-hover: #d4af37;
+    --gold: #d4af37;
+    --gold-light: #ffd700;
+    --text-primary: #e0e0e0;
+    --text-secondary: #8b9dc3;
+    --text-muted: #555;
+    --green: #3fb950;
+    --red: #f85149;
+    --blue: #58a6ff;
+    --purple: #bc8cff;
+    --orange: #d29922;
+}
+
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+a { color: var(--gold); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---- Header Banner ---- */
+.site-header {
+    text-align: center;
+    padding: 24px 20px 18px;
+    background: linear-gradient(135deg, #0d1b2a 0%, #1b2838 50%, #0d1b2a 100%);
+    border-bottom: 2px solid var(--gold);
+    position: relative;
+}
+
+.site-header img.clan-logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 3px solid var(--gold);
+    margin-bottom: 6px;
+}
+
+.site-header h1 {
+    color: var(--gold);
+    font-size: 2em;
+    letter-spacing: 2px;
+    margin-bottom: 2px;
+}
+
+.site-header .tagline {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.site-header .header-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 0.85em;
+}
+
+.site-header .header-links a {
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s;
+}
+
+.site-header .header-links a:hover {
+    color: var(--gold);
+    text-decoration: none;
+}
+
+.header-meta {
+    position: absolute;
+    bottom: 12px;
+    right: 24px;
+    display: flex;
+    gap: 16px;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.header-meta .meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.2;
+}
+
+.header-meta .meta-value {
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+.header-meta .meta-label {
+    color: var(--text-muted);
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ---- Navigation ---- */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+    height: 42px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 0;
+    list-style: none;
+    height: 100%;
+}
+
+.navbar-links li { height: 100%; }
+
+.navbar-links a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 24px;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.navbar-links a:hover,
+.navbar-links a.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+    text-decoration: none;
+}
+
+/* ---- Page Container ---- */
+.page-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px 12px;
+}
+
+/* ---- Section Headers ---- */
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+}
+
+.section-header h2 {
+    color: var(--gold);
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+.section-header img {
+    width: 28px;
+    height: 28px;
+    image-rendering: pixelated;
+}
+
+.section-header:first-child { margin-top: 0; }
+
+/* ---- Card Grid ---- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+/* ---- Cards ---- */
+.card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    transition: border-color 0.2s;
+    overflow: hidden;
+}
+
+.card:hover { border-color: var(--border-hover); }
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.card-header img {
+    width: 24px;
+    height: 24px;
+    image-rendering: pixelated;
+    flex-shrink: 0;
+}
+
+.card-header h3 {
+    color: var(--gold-light);
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.card-highlight {
+    border-color: var(--gold);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, #1a1f2e 100%);
+}
+
+/* ---- Showcase Cards (for #1 players) ---- */
+.showcase-card {
+    background: linear-gradient(135deg, #1a1500 0%, var(--bg-secondary) 100%);
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.showcase-card h3 {
+    color: var(--gold);
+    font-size: 1.1em;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.showcase-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    font-size: 0.85em;
+    border-bottom: 1px solid var(--border);
+}
+
+.showcase-item:last-child { border-bottom: none; }
+
+.showcase-item .label { color: var(--text-secondary); }
+.showcase-item .value { color: var(--gold-light); font-weight: 600; }
+.showcase-item .player { color: var(--text-primary); font-weight: 500; }
+
+/* ---- Competition Card ---- */
+.competition-card {
+    background: linear-gradient(135deg, #1a1200 0%, var(--bg-secondary) 100%);
+    border: 1px solid var(--orange);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.competition-card h3 {
+    color: var(--orange);
+    font-size: 1.1em;
+    margin-bottom: 4px;
+}
+
+.competition-card .comp-meta {
+    color: var(--text-muted);
+    font-size: 0.85em;
+    margin-bottom: 12px;
+}
+
+/* ---- Tables ---- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8em;
+    table-layout: fixed;
+}
+
+th {
+    text-align: left;
+    color: var(--gold);
+    padding: 5px 6px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+td {
+    padding: 4px 6px;
+    border-bottom: 1px solid #1f2937;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+tr:hover { background: #1f2937; }
+
+td.rank {
+    color: var(--gold);
+    font-weight: 700;
+    width: 22px;
+}
+
+td.player-name {
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+td.value-cell {
+    color: var(--text-secondary);
+    text-align: right;
+}
+
+td.gained-cell {
+    color: var(--green);
+    text-align: right;
+    font-size: 0.85em;
+}
+
+td.gained-cell.zero { color: var(--text-muted); }
+
+td.timestamp {
+    color: var(--text-muted);
+    font-size: 0.8em;
+    white-space: nowrap;
+}
+
+.medal-1 { color: #ffd700; }
+.medal-2 { color: #c0c0c0; }
+.medal-3 { color: #cd7f32; }
+
+/* ---- Dual-column tables (all-time / month) ---- */
+.dual-column-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+/* Column widths for dual table: # | player | value | divider | player | gained */
+.dual-column-table th:nth-child(1),
+.dual-column-table td:nth-child(1) { width: 20px; }
+.dual-column-table th:nth-child(2),
+.dual-column-table td:nth-child(2) { width: auto; }
+.dual-column-table th:nth-child(3),
+.dual-column-table td:nth-child(3) { width: 55px; }
+.dual-column-table th:nth-child(4),
+.dual-column-table td:nth-child(4) { width: auto; }
+.dual-column-table th:nth-child(5),
+.dual-column-table td:nth-child(5) { width: 55px; }
+
+.dual-column-table th.col-alltime,
+.dual-column-table td.col-alltime {
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.dual-column-table th.col-month,
+.dual-column-table td.col-month {
+    background: rgba(59, 185, 80, 0.08);
+}
+
+/* Strong visual divider between all-time and month */
+.dual-column-table td.col-month:first-of-type,
+.dual-column-table th.col-header-month:first-of-type {
+    border-left: 2px solid var(--border);
+}
+
+.dual-column-table td:nth-child(4),
+.dual-column-table th:nth-child(4) {
+    border-left: 2px solid #30363d;
+}
+
+.col-header-alltime { color: var(--gold) !important; }
+.col-header-month { color: var(--green) !important; }
+
+/* ---- Carousel (drops / collection logs) ---- */
+.carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.4s ease;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    flex-shrink: 0;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(13, 17, 23, 0.85);
+    color: var(--gold);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 1.1em;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.carousel-btn:hover {
+    background: var(--bg-secondary);
+    border-color: var(--gold);
+}
+
+.carousel-btn.prev { left: 6px; }
+.carousel-btn.next { right: 6px; }
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 0 4px;
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.carousel-dot.active { background: var(--gold); }
+
+/* ---- Feed Sections (drops, clogs) ---- */
+.feed {
+    max-height: 600px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+
+.feed::-webkit-scrollbar { width: 6px; }
+.feed::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+.drop-entry, .clog-entry {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-bottom: 1px solid #1f2937;
+    font-size: 0.9em;
+}
+
+.drop-entry:hover, .clog-entry:hover { background: #1f2937; }
+
+.drop-entry img {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    background: var(--bg-tertiary);
+    image-rendering: pixelated;
+    flex-shrink: 0;
+}
+
+.drop-info { flex: 1; min-width: 0; }
+.drop-info .coins { color: var(--gold-light); font-weight: 700; margin-left: 6px; }
+.drop-info .source { color: var(--text-muted); font-size: 0.85em; }
+
+.entry-timestamp {
+    color: var(--text-muted);
+    font-size: 0.75em;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* ---- Gained Records Tabs ---- */
+.gained-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.gained-tab {
+    padding: 6px 16px;
+    color: var(--text-muted);
+    font-size: 0.85em;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: inherit;
+}
+
+.gained-tab:hover, .gained-tab.active {
+    color: var(--green);
+    border-bottom-color: var(--green);
+}
+
+.gained-panel { display: none; }
+.gained-panel.active { display: block; }
+
+/* ---- PB Mode Tabs ---- */
+.mode-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.mode-tab {
+    padding: 8px 20px;
+    color: var(--text-muted);
+    font-size: 0.9em;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: inherit;
+    font-weight: 500;
+}
+
+.mode-tab:hover, .mode-tab.active {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+}
+
+.mode-panel { display: none; }
+.mode-panel.active { display: block; }
+
+/* ---- Empty States ---- */
+.empty-state {
+    color: var(--text-muted);
+    font-style: italic;
+    padding: 20px;
+    text-align: center;
+}
+
+/* ---- Footer ---- */
+.footer {
+    text-align: center;
+    color: var(--text-muted);
+    margin-top: 48px;
+    padding: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 0.85em;
+}
+
+.footer img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.footer a { color: var(--gold); }
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+    .grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+    .header-meta { position: static; justify-content: center; margin-top: 10px; }
+}
+
+@media (max-width: 768px) {
+    .site-header { padding: 16px 12px 12px; }
+    .site-header h1 { font-size: 1.5em; }
+    .header-meta { position: static; justify-content: center; margin-top: 10px; }
+    .navbar { flex-wrap: wrap; height: auto; }
+    .navbar-links { flex-wrap: wrap; justify-content: center; height: auto; }
+    .navbar-links a { padding: 8px 12px; }
+    .page-container { padding: 12px 8px; }
+    .grid { grid-template-columns: 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
+}
