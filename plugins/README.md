@@ -1,1 +1,1 @@
-Creating a folder plugins that we can reload as well as the main functionalites of the bot + website
+Create a plugins folder that can be dynamically reloaded, along with the core functionalities of both the bot and the website.
