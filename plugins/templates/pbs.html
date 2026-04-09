@@ -1,0 +1,287 @@
+{% extends "base.html" %}
+{% block title %}Sea Worthy — Personal Bests{% endblock %}
+
+{% block content %}
+
+{# ============================================================
+   PRIORITY BOSSES: TOA, TOB, COX, Sol Heredit, Zuk
+   ============================================================ #}
+
+{# ---- Tombs of Amascut ---- #}
+{% if toa_pbs %}
+<div class="section-header">
+    <img src="/static/images/tombs_of_amascut.png" onerror="this.style.display='none'" alt="TOA">
+    <h2>Tombs of Amascut Personal Bests</h2>
+</div>
+
+<div class="tab-group">
+    <div class="mode-tabs">
+        <button class="mode-tab active" data-target="toa-normal">Normal Mode</button>
+        <button class="mode-tab" data-target="toa-expert">Expert Mode</button>
+    </div>
+
+    <div class="mode-panel active" id="toa-normal">
+        <div class="grid">
+            {% for size in range(1, 9) %}
+            {% set key = 'Team of ' ~ size %}
+            {% if key in toa_pbs.get('Normal', {}) or key in toa_pbs.get('', {}) %}
+            <div class="card">
+                <div class="card-header">
+                    <h3>{% if size == 1 %}Solo{% else %}Team of {{ size }}{% endif %}</h3>
+                </div>
+                <table>
+                    <tr><th>#</th><th>Player</th><th>Time</th></tr>
+                    {% set entries = toa_pbs.get('Normal', {}).get(key, []) + toa_pbs.get('', {}).get(key, []) %}
+                    {% for pb in entries|sort(attribute='time_seconds') %}
+                    <tr>
+                        <td class="rank">{{ loop.index }}</td>
+                        <td class="player-name">{{ pb.player_name }}</td>
+                        <td class="value-cell">{{ pb.time_display }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="mode-panel" id="toa-expert">
+        <div class="grid">
+            {% for size in range(1, 9) %}
+            {% set key = 'Team of ' ~ size %}
+            {% if key in toa_pbs.get('Expert', {}) %}
+            <div class="card">
+                <div class="card-header">
+                    <h3>{% if size == 1 %}Solo{% else %}Team of {{ size }}{% endif %}</h3>
+                </div>
+                <table>
+                    <tr><th>#</th><th>Player</th><th>Time</th></tr>
+                    {% for pb in toa_pbs['Expert'][key]|sort(attribute='time_seconds') %}
+                    <tr>
+                        <td class="rank">{{ loop.index }}</td>
+                        <td class="player-name">{{ pb.player_name }}</td>
+                        <td class="value-cell">{{ pb.time_display }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{# ---- Theatre of Blood ---- #}
+{% if tob_pbs %}
+<div class="section-header">
+    <img src="/static/images/theatre_of_blood.png" onerror="this.style.display='none'" alt="TOB">
+    <h2>Theatre of Blood Personal Bests</h2>
+</div>
+
+<div class="tab-group">
+    <div class="mode-tabs">
+        <button class="mode-tab active" data-target="tob-normal">Normal Mode</button>
+        <button class="mode-tab" data-target="tob-hard">Hard Mode</button>
+    </div>
+
+    <div class="mode-panel active" id="tob-normal">
+        <div class="grid">
+            {% for size in range(1, 6) %}
+            {% set key = 'Team of ' ~ size %}
+            {% if key in tob_pbs.get('normal', {}) %}
+            <div class="card">
+                <div class="card-header">
+                    <h3>{% if size == 1 %}Solo{% else %}Team of {{ size }}{% endif %}</h3>
+                </div>
+                <table>
+                    <tr><th>#</th><th>Player</th><th>Time</th></tr>
+                    {% for pb in tob_pbs['normal'][key]|sort(attribute='time_seconds') %}
+                    <tr>
+                        <td class="rank">{{ loop.index }}</td>
+                        <td class="player_name">{{ pb.player_name }}</td>
+                        <td class="value-cell">{{ pb.time_display }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="mode-panel" id="tob-hard">
+        <div class="grid">
+            {% for size in range(1, 6) %}
+            {% set key = 'Team of ' ~ size %}
+            {% if key in tob_pbs.get('hard', {}) %}
+            <div class="card">
+                <div class="card-header">
+                    <h3>{% if size == 1 %}Solo{% else %}Team of {{ size }}{% endif %}</h3>
+                </div>
+                <table>
+                    <tr><th>#</th><th>Player</th><th>Time</th></tr>
+                    {% for pb in tob_pbs['hard'][key]|sort(attribute='time_seconds') %}
+                    <tr>
+                        <td class="rank">{{ loop.index }}</td>
+                        <td class="player-name">{{ pb.player_name }}</td>
+                        <td class="value-cell">{{ pb.time_display }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{# ---- Chambers of Xeric ---- #}
+{% if cox_pbs %}
+<div class="section-header">
+    <img src="/static/images/chambers_of_xeric.png" onerror="this.style.display='none'" alt="COX">
+    <h2>Chambers of Xeric Personal Bests</h2>
+</div>
+
+<div class="tab-group">
+    <div class="mode-tabs">
+        <button class="mode-tab active" data-target="cox-normal">Normal Mode</button>
+        <button class="mode-tab" data-target="cox-cm">Challenge Mode</button>
+    </div>
+
+    <div class="mode-panel active" id="cox-normal">
+        <div class="grid">
+            {% for size in range(1, 9) %}
+            {% set key = 'Team of ' ~ size %}
+            {% if key in cox_pbs.get('normal', {}) %}
+            <div class="card">
+                <div class="card-header">
+                    <h3>{% if size == 1 %}Solo{% else %}Team of {{ size }}{% endif %}</h3>
+                </div>
+                <table>
+                    <tr><th>#</th><th>Player</th><th>Time</th></tr>
+                    {% for pb in cox_pbs['normal'][key]|sort(attribute='time_seconds') %}
+                    <tr>
+                        <td class="rank">{{ loop.index }}</td>
+                        <td class="player-name">{{ pb.player_name }}</td>
+                        <td class="value-cell">{{ pb.time_display }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="mode-panel" id="cox-cm">
+        <div class="grid">
+            {% for size in range(1, 9) %}
+            {% set key = 'Team of ' ~ size %}
+            {% if key in cox_pbs.get('cm', {}) %}
+            <div class="card">
+                <div class="card-header">
+                    <h3>{% if size == 1 %}Solo{% else %}Team of {{ size }}{% endif %}</h3>
+                </div>
+                <table>
+                    <tr><th>#</th><th>Player</th><th>Time</th></tr>
+                    {% for pb in cox_pbs['cm'][key]|sort(attribute='time_seconds') %}
+                    <tr>
+                        <td class="rank">{{ loop.index }}</td>
+                        <td class="player-name">{{ pb.player_name }}</td>
+                        <td class="value-cell">{{ pb.time_display }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{# ---- Sol Heredit ---- #}
+{% if sol_pbs %}
+<div class="section-header">
+    <img src="/static/images/sol_heredit.png" onerror="this.style.display='none'" alt="Sol Heredit">
+    <h2>Sol Heredit Personal Bests</h2>
+</div>
+<div class="grid">
+    {% for team_key, entries in sol_pbs.items() %}
+    <div class="card">
+        <div class="card-header"><h3>{{ team_key }}</h3></div>
+        <table>
+            <tr><th>#</th><th>Player</th><th>Time</th></tr>
+            {% for pb in entries|sort(attribute='time_seconds') %}
+            <tr>
+                <td class="rank">{{ loop.index }}</td>
+                <td class="player-name">{{ pb.player_name }}</td>
+                <td class="value-cell">{{ pb.time_display }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{# ---- TzKal-Zuk ---- #}
+{% if zuk_pbs %}
+<div class="section-header">
+    <img src="/static/images/tzkal_zuk.png" onerror="this.style.display='none'" alt="TzKal-Zuk">
+    <h2>TzKal-Zuk Personal Bests</h2>
+</div>
+<div class="grid">
+    {% for team_key, entries in zuk_pbs.items() %}
+    <div class="card">
+        <div class="card-header"><h3>{{ team_key }}</h3></div>
+        <table>
+            <tr><th>#</th><th>Player</th><th>Time</th></tr>
+            {% for pb in entries|sort(attribute='time_seconds') %}
+            <tr>
+                <td class="rank">{{ loop.index }}</td>
+                <td class="player-name">{{ pb.player_name }}</td>
+                <td class="value-cell">{{ pb.time_display }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{# ============================================================
+   ALL OTHER BOSSES (alphabetical)
+   ============================================================ #}
+{% if other_pbs %}
+<div class="section-header"><h2>Other Personal Bests</h2></div>
+<div class="grid">
+    {% for boss, entries in other_pbs.items() %}
+    <div class="card">
+        <div class="card-header">
+            <img src="/static/images/{{ boss|lower|replace(' ', '_') }}.png"
+                 onerror="this.style.display='none'" alt="{{ boss }}">
+            <h3>{{ boss }}</h3>
+        </div>
+        <table>
+            <tr><th>#</th><th>Player</th><th>Time</th><th>Team</th></tr>
+            {% for pb in entries|sort(attribute='time_seconds') %}
+            <tr>
+                <td class="rank">{{ loop.index }}</td>
+                <td class="player-name">{{ pb.player_name }}</td>
+                <td class="value-cell">{{ pb.time_display }}</td>
+                <td style="color:var(--text-muted);font-size:0.85em;">
+                    {{ pb.team_size }}{% if pb.mode %} {{ pb.mode }}{% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% endblock %}
